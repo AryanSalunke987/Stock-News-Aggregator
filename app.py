@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 from scrapper import scrape_all
+from datetime import datetime
 
 st.set_page_config(page_title="Stock Market News Aggregator", layout="wide")
 
@@ -18,3 +19,5 @@ else:
 if st.checkbox("Show saved CSV"):
     df = pd.read_csv("headlines.csv")
     st.dataframe(df[['source', 'headline', 'summary', 'link', 'timestamp']])
+
+st.caption(f"🕒 Last updated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
